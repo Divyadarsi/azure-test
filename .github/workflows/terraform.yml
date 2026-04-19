@@ -43,7 +43,4 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
-
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        
