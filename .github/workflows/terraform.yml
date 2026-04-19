@@ -1,4 +1,4 @@
-# Thiname: Terraform Azure VM
+#name: 'Terraform'
 
 on:
   push:
