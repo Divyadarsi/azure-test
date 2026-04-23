@@ -11,5 +11,6 @@ variable "username" {
 }
 
 variable "ssh_public_key" {
-  description = "SSH Public Key"
+  description = "SSH public key for VM access"
+  type        = string
 }
