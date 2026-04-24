@@ -113,10 +113,10 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
   computer_name  = "hostname"
   admin_username = var.username
 
-  admin_ssh_key {
-    username   = var.username
-    public_key = var.ssh_public_key
-  }
+admin_ssh_key {
+  username   = "azureuser"
+  public_key = file("~/.ssh/id_rsa.pub") # Notice the .pub extension
+}
 
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
