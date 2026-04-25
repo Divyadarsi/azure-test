@@ -117,6 +117,9 @@ admin_ssh_key {
   username   = "azureuser"
   admin_password   = "YourComplexPassword123!" 
   disable_password_authentication = false
+    username   = "adminuser"
+    public_key = var.ssh_public_key # This MUST be defined here
+  }
 }
 
   boot_diagnostics {
