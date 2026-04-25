@@ -73,10 +73,8 @@ resource "azurerm_network_interface_security_group_association" "example" {
 # Generate random text for a unique storage account name
 resource "random_id" "random_id" {
   keepers = {
-    # Generate a new ID only when a new resource group is defined
     resource_group = azurerm_resource_group.rg.name
   }
-
   byte_length = 8
 }
 
@@ -110,17 +108,15 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
     version   = "latest"
   }
 
-  computer_name  = "hostname"
-  admin_username = var.username
-
-admin_ssh_key {
-  username   = "azureuser"
-  admin_password   = "YourComplexPassword123!" 
+  computer_name                   = "hostname"
+  admin_username                  = var.username
+  admin_password                  = "YourComplexPassword123!"
   disable_password_authentication = false
-    username   = "adminuser"
-    public_key = var.ssh_public_key # This MUST be defined here
+
+  admin_ssh_key {
+    username   = var.username
+    public_key = var.ssh_public_key
   }
-}
 
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
