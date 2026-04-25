@@ -115,7 +115,8 @@ resource "azurerm_linux_virtual_machine" "my_terraform_vm" {
 
 admin_ssh_key {
   username   = "azureuser"
-  public_key = file("~/.ssh/id_rsa.pub") # Notice the .pub extension
+  admin_password   = "YourComplexPassword123!" 
+  disable_password_authentication = false
 }
 
   boot_diagnostics {
